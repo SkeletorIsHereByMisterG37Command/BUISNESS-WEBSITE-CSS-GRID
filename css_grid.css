@@ -1,0 +1,658 @@
+/* Reset the default stuff the browser come with */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark-text-color);
+}
+
+/* My CSS Variables */
+:root {
+    --button-shadow: 0 0 5px 5px yellow;
+    --button-text-color: gold;
+    --button-background-color: #90AACB;
+
+    --anchor-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+
+    --primary-text-color: #ddd;
+    --primary-background-color: #ddd;
+
+    --dark-text-color: #333;
+    --dark-background-color: #333;
+
+    --light-text-color: #fff;
+    --light-background-color: #fff;
+
+    --background-box-color: rgba(0, 0, 0, 0.6);
+
+    --body-background-color: #ccc;
+
+    --general-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    --general-hover-shadow: 0 0 5px 5px #14279B;
+
+    --showcase-h1-text-color: #E5D549;
+    --showcase-h1-text-shadow: 2px 2px 8px tomato;
+
+    --paragraph-text-shadow: 2px 2px 8px tomato;
+}
+
+/* google fonts */
+@font-face {
+    font-family: show_case_h1_font-bolder;
+    src: url("fonts/show_case_h1_font-bolder.ttf");
+}
+
+
+/****************** start: Global Design ******************/
+body {
+    background-color: var(--body-background-color);
+    margin: 30px 50px;
+    line-height: 1.4;
+}
+
+.btn {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid var(--button-text-color);
+}
+
+.btn::before,
+.btn::after {
+    border-radius: 5px;
+}
+
+.btn:active {
+    box-shadow: var(--button-shadow);
+}
+
+/* 
+    we want 
+    all the images 
+    to stay inside 
+    their containers 
+*/
+img {
+    max-width: 100%;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+}
+
+/****************** end: Global Design ******************/
+
+/* **************** start: main-nav ******************/
+
+/* 
+    the navigation bar 
+    goes from verical 
+    to horizontal here 
+*/
+.main-nav ul {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+    list-style: none;
+}
+
+.main-nav a {
+
+    display: block;
+
+
+    background-color: var(--primary-background-color);
+    color: var(--dark-text-color);
+
+
+    text-decoration: none;
+    text-align: center;
+
+
+    padding: 0.8rem;
+
+
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: bolder;
+
+
+    box-shadow: var(--anchor-shadow);
+}
+
+.main-nav a:hover {
+
+    background-color: var(--dark-background-color);
+    color: var(--light-text-color);
+}
+
+/* **************** end: main-nav ******************/
+
+
+/****************** start: main-container *********************/
+.main-container {
+
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+        'showcase showcase top-box-a'
+        'showcase showcase top-box-b';
+}
+
+.main-container .showcase {
+
+    grid-area: showcase;
+
+
+    min-height: 400px;
+
+
+    background: url("images/show_case_img.jpg");
+    background-size: cover;
+
+
+    padding: 3rem;
+
+    /*
+            we will use 
+            the flexbox method
+            to align stuff
+            within the 
+            grid-design-boxes
+    */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+
+    box-shadow: var(--general-shadow);
+}
+
+.main-container .showcase:hover {
+    box-shadow: var(--general-hover-shadow);
+}
+
+.main-container .top-box {
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+
+    background-color: var(--primary-background-color);
+
+
+    box-shadow: var(--general-shadow);
+
+
+    padding: 1.5rem;
+}
+
+.main-container .top-box:hover {
+    box-shadow: var(--general-hover-shadow);
+}
+
+.main-container .showcase .top-box-a {
+    grid-area: top-box-a;
+}
+
+.main-container .showcase .top-box-b {
+    grid-area: top-box-b;
+}
+
+
+.main-container .showcase h1 {
+
+    color: var(--showcase-h1-text-color);
+
+    font-size: 4rem;
+    font-weight: lighter;
+    font-family: show_case_h1_font-bolder;
+
+    word-spacing: 5px;
+
+    text-shadow: var(--showcase-h1-text-shadow);
+
+}
+
+.main-container .showcase p {
+
+    color: var(--light-text-color);
+
+    font-size: 1.3rem;
+    font-weight: lighter;
+
+    text-shadow: var(--paragraph-text-shadow);
+
+    margin-bottom: 10px;
+}
+
+
+.main-container .top-box .membership-price {
+    font-size: 1.9rem;
+}
+
+/****************** end: main-container *********************/
+
+/****************** start: boxes *********************/
+
+/*
+    this makes
+    the boxes
+    appeared
+    horizontally
+*/
+.boxes {
+
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.boxes .box {
+
+    background-color: var(--primary-background-color);
+
+    text-align: center;
+
+    padding: 1.5rem 2rem;
+
+    box-shadow: var(--general-shadow);
+}
+
+.boxes .box:hover {
+    box-shadow: var(--general-hover-shadow);
+}
+
+/****************** end: boxes *********************/
+
+/****************** start: info section *********************/
+.info {
+
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+
+    background-color: var(--primary-background-color);
+
+    box-shadow: var(--general-shadow);
+
+    padding: 3rem;
+}
+
+.info:hover {
+    box-shadow: var(--general-hover-shadow);
+}
+
+.info img {
+
+    max-height: 16rem;
+}
+
+.info div {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 16rem;
+}
+
+.info div h2 {
+
+    align-self: start;
+
+    margin-top: -11px;
+    margin-bottom: 1.4rem;
+
+    font-size: 1.7rem;
+}
+
+.info div p {
+
+    font-style: italic;
+    font-size: 1rem;
+
+    margin-bottom: 1.5rem;
+
+    width: 446.67px;
+    height: 168px;
+}
+
+.info div a {
+
+    align-self: start;
+}
+
+/****************** end: info section *********************/
+
+/****************** start: portfolio section *********************/
+.portfolio {
+
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.portfolio img {
+
+    width: 100%;
+
+    box-shadow: var(--general-shadow);
+}
+
+.portfolio img:hover {
+    box-shadow: var(--general-hover-shadow);
+}
+
+/****************** end: portfolio section *********************/
+
+/****************** start: footer *********************/
+footer {
+
+    background-color: var(--dark-background-color);
+
+    margin-top: 2rem;
+
+    padding: 1rem;
+
+    text-align: center;
+}
+
+footer p {
+
+    color: var(--light-text-color);
+}
+
+/****************** end: footer ***********************/
+
+/* ************** start: responsiveness ******************** */
+
+
+/* 
+  Device = Desktops
+  Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+
+    /* CSS - DEFAULT */
+}
+
+
+
+/* 
+    Device = Laptops, Desktops
+    Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    .main-container .top-box .membership-price {
+        font-size: 1.9rem;
+    }
+
+
+}
+
+
+
+/* 
+    Device = Tablets, Ipads (portrait)
+    Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .main-nav ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .main-container {
+
+        display: grid;
+        grid-gap: 20px;
+        grid-template-areas:
+            'showcase showcase'
+            'top-box-a top-box-b';
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .info img {
+        display: none;
+    }
+
+    .info div {
+        margin: auto;
+    }
+
+    .info div .grid-item {
+        align-self: center;
+        text-align: center;
+    }
+}
+
+/* 
+    Device = Tablets, Ipads (landscape)
+    Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {}
+
+/* 
+    Device = Low Resolution Tablets, Mobiles (Landscape)
+    Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .main-nav ul {
+        grid-template-columns: repeat(1, 0.6fr);
+    }
+
+    .main-container {
+
+        display: grid;
+        grid-gap: 20px;
+        grid-template-areas:
+            'showcase'
+            'showcase'
+            'top-box-a'
+            'top-box-b';
+
+        width: 359.2px;
+    }
+
+    .main-container .showcase {
+        width: 359.2px;
+    }
+
+    .main-container .showcase h1 {
+        font-size: 2.7rem;
+    }
+
+    .main-container .showcase p {
+        font-size: 1rem;
+    }
+
+    .main-container .top-box h4 {
+        margin-bottom: 20px;
+    }
+
+    .main-container .top-box .membership-price {
+        font-size: 1.7rem;
+        margin-bottom: 20px;
+    }
+
+    .boxes {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .boxes .box {
+        width: 359.2px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 359.2px;
+    }
+
+    .info img {
+        display: none;
+    }
+
+
+    .info div h2 {
+        font-size: 1.1rem;
+    }
+
+    .info div p {
+        font-size: 0.6rem;
+        width: 239px;
+        text-align: center;
+    }
+
+    .info div a {
+        align-self: center;
+    }
+
+    .portfolio {
+        display: flex;
+        flex-direction: column;
+        width: 359.2px;
+    }
+
+    footer {
+        width: 359.2px;
+    }
+}
+
+/* 
+    Device = Most of the Smartphones Mobiles (Portrait)
+    Screen = B/w 320px to 479px
+*/
+@media (min-width: 10px) and (max-width: 480px) {
+
+    .main-nav ul {
+        grid-template-columns: repeat(1, 0.1fr);
+    }
+
+    .main-container {
+
+        display: grid;
+        grid-gap: 20px;
+        grid-template-areas:
+            'showcase'
+            'showcase'
+            'top-box-a'
+            'top-box-b';
+
+        width: 195.78px;
+    }
+
+    .main-container .showcase {
+        width: 195.78px;
+    }
+
+    .main-container .showcase h1 {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        align-self: center;
+    }
+
+    .main-container .showcase p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        align-self: center;
+    }
+
+    .main-container .showcase a {
+        align-self: center;
+    }
+
+    .main-container .top-box {
+        width: 195.78px;
+    }
+
+    .main-container .top-box h4 {
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .main-container .top-box .membership-price {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .main-container .top-box a {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .boxes {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .boxes .box {
+        width: 195.78px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 195.78px;
+        height: 25rem;
+    }
+
+    .info img {
+        display: none;
+    }
+
+
+    .info div h2 {
+        font-size: 0.7rem;
+        text-align: center;
+        margin-top: -40px;
+    }
+
+    .info div p {
+        font-size: 0.6rem;
+        width: 106.72px;
+        align-self: center;
+        text-align: center;
+        margin-bottom: 105px;
+    }
+
+    .info div a {
+        align-self: center;
+        font-size: 0.6rem;
+    }
+
+    .portfolio {
+        display: flex;
+        flex-direction: column;
+        width: 195.78px;
+    }
+
+    footer {
+        width: 195.78px;
+        font-size: 0.6rem;
+    }
+}
+
+/* ************** end: responsiveness ******************** */
